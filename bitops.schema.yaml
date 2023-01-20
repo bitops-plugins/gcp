@@ -1,0 +1,11 @@
+gcp:
+  type: object
+  properties:
+    options:
+      type: object
+      properties:
+        foo:
+          type: string
+          export_env: GCP_FOO
+          required: true
+          default: bar
