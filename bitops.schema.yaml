@@ -4,7 +4,7 @@ gcp:
     options:
       type: object
       properties:
-        foo:
+        GCP_FOO:
           type: string
           export_env: GCP_FOO
           required: true
