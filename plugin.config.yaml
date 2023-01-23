@@ -2,3 +2,7 @@ plugin:
   deployment:
     language: bash
     deployment_script: deploy.sh
+
+  install:
+    language: bash
+    deployment_script: deploy.sh

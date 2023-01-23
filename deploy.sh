@@ -38,9 +38,12 @@ bash $SCRIPTS_DIR/validate_env.sh
 
 cd $GCP_ROOT_OPERATIONS
 
+echo
 echo "Listing contents of gcp Root: $GCP_ROOT_OPERATIONS"
 ls -al .
+echo
 
+echo
 echo "Ops Repo Env Vars:"
 echo "BITOPS_GCP_FOO: $BITOPS_GCP_FOO"
 echo
