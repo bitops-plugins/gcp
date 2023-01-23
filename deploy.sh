@@ -42,5 +42,5 @@ echo "Listing contents of gcp Root: $GCP_ROOT_OPERATIONS"
 ls -al .
 
 echo "Ops Repo Env Vars:"
-echo "GCP_FOO: $GCP_FOO"
+echo "BITOPS_GCP_FOO: $BITOPS_GCP_FOO"
 echo
