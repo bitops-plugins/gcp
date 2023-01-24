@@ -5,4 +5,4 @@ plugin:
 
   install:
     language: bash
-    deployment_script: deploy.sh
+    install_script: install.sh
