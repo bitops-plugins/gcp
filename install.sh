@@ -3,17 +3,20 @@ set -e
 
 # env vars
 CLI_PKG_NAME=gcli.gz
+INSTALL_DIR=/opt/download
 
 # new dir
-mkdir -p /opt/download
-cd /opt/download
+mkdir -p $INSTALL_DIR
+cd $INSTALL_DIR
 
-curl -s https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-414.0.0-linux-arm.tar.gz -o $CLI_PKG_NAME \
-&& tar -xf $CLI_PKG_NAME  \
-&& ./google-cloud-sdk/install.sh --quiet \
-&& rm $CLI_PKG_NAME \
+curl https://sdk.cloud.google.com > install.sh && chmod +x ./install.sh
+bash ./install.sh --disable-prompts --install-dir=$INSTALL_DIR
+
+alias gc=$INSTALL_DIR/google-cloud-sdk/bin/gcloud
+touch /root/.bashrc
+echo "alias gc=$INSTALL_DIR/google-cloud-sdk/bin/gcloud" >> /root/.bashrc
 
 # && apk --no-cache -q add curl tar \
 # && ./google-cloud-sdk/bin/gcloud init --no-browser --skip-diagnostics
 # alias gc=/opt/download/google-cloud-sdk/bin/gcloud > /root/.bashrc
-# gc info
+echo '"gc" is the alias for the gcloud cli... happy googling!'
