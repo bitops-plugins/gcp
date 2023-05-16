@@ -32,5 +32,7 @@ echo "GCP_FOO: $GCP_FOO"
 echo "GCP_BAR: $GCP_BAR"
 
 # here is the image using the installed cli
-echo "Running the plugin CLI... later"
-# $PLUGIN_CLI version
+echo "Initializing the plugin path..."
+PATH=${PATH}:/opt/bitops/google-cloud-sdk/bin/
+
+$PLUGIN_CLI version
