@@ -9,3 +9,8 @@ gcp:
           export_env: GCP_FOO
           required: true
           default: bar
+        GCP_BAR:
+          type: string
+          export_env: GCP_BAR
+          required: true
+          default: rab

@@ -1,22 +1,22 @@
 #!/bin/bash
 set -e
 
+echo "In the install script for the GCP plugin"
+
+# the basics
+apk update && apk upgrade
+
 # env vars
-CLI_PKG_NAME=gcli.gz
-INSTALL_DIR=/opt/download
+CLI_INSTALL_DIR=/opt/download
 
 # new dir
-mkdir -p $INSTALL_DIR
-cd $INSTALL_DIR
+mkdir -p $CLI_INSTALL_DIR && cd $CLI_INSTALL_DIR
 
 curl https://sdk.cloud.google.com > install.sh && chmod +x ./install.sh
-bash ./install.sh --disable-prompts --install-dir=$INSTALL_DIR
+./install.sh --disable-prompts --install-dir=$CLI_INSTALL_DIR
 
-alias gc=$INSTALL_DIR/google-cloud-sdk/bin/gcloud
+CLI_PATH=$CLI_INSTALL_DIR/google-cloud-sdk/bin
 touch /root/.bashrc
-echo "alias gc=$INSTALL_DIR/google-cloud-sdk/bin/gcloud" >> /root/.bashrc
+echo "export PATH=$PATH:$CLI_PATH" > /root/.bashrc
 
-# && apk --no-cache -q add curl tar \
-# && ./google-cloud-sdk/bin/gcloud init --no-browser --skip-diagnostics
-# alias gc=/opt/download/google-cloud-sdk/bin/gcloud > /root/.bashrc
-echo '"gc" is the alias for the gcloud cli... happy googling!'
+echo "Finished installing the GCP plugin"
