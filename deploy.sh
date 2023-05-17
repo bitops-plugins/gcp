@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1091
 set -e
 
 PLUGIN_NAME="GCP"
@@ -25,14 +26,18 @@ fi
 cd $BITOPS_OPSREPO_ENVIRONMENT_DIR
 
 echo "Listing contents of $PLUGIN_NAME plugin Root: $BITOPS_OPSREPO_ENVIRONMENT_DIR"
-ls -l
+ls -la
 
+# TODO: make the env var names dynamic ie:
+# varname=${PLUGIN_NAME}_FOO
+# echo "$varname: ${!varname}"  <-- but this doesn't work
+echo '----------------------------------------'
 echo "Options:"
-echo "GCP_FOO: $GCP_FOO"
-echo "GCP_BAR: $GCP_BAR"
+echo "${PLUGIN_NAME}_FOO: $GCP_FOO"
+echo "${PLUGIN_NAME}_BAR: $GCP_BAR"
 
-# here is the image using the installed cli
-echo "Initializing the plugin path..."
-PATH=${PATH}:/opt/bitops/google-cloud-sdk/bin/
-
+# $PATH is set in .bashrc by the install script
+source '/root/.bashrc'
+echo 'Checking plugin version'
 $PLUGIN_CLI version
+echo '----------------------------------------'
